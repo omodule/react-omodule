@@ -1,0 +1,19 @@
+{
+  "name": "react-omodule",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omodule/react-omodule.git"
+  },
+  "author": "wuchangming",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/omodule/react-omodule/issues"
+  },
+  "homepage": "https://github.com/omodule/react-omodule#readme"
+}
