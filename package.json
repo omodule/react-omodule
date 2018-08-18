@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/omodule/react-omodule/issues"
   },
-  "homepage": "https://github.com/omodule/react-omodule#readme"
+  "homepage": "https://github.com/omodule/react-omodule#readme",
+  "devDependencies": {
+    "create-react-app": "^1.5.2"
+  }
 }
