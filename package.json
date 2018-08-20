@@ -1,10 +1,12 @@
 {
   "name": "react-omodule",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && babel src --out-dir lib",
+    "clean": "rimraf lib lib",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,16 @@
   },
   "homepage": "https://github.com/omodule/react-omodule#readme",
   "devDependencies": {
-    "create-react-app": "^1.5.2"
-  }
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "lazy-reducer": "^0.4.2",
+    "lodash": "^4.17.10",
+    "react": "^16.4.2",
+    "redux": "^4.0.0",
+    "rimraf": "^2.6.2"
+  },
+  "files": [
+    "lib"
+  ]
 }
