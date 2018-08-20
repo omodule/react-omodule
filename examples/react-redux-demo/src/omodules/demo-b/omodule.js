@@ -1,20 +1,9 @@
 import route from './route'
-// import reducer from './reducer'
-console.log(route)
+import reducer from './reducer'
 
 export default {
-    // reducer: {
-    //     [`${__onamespace}`]: reducer
-    // },
-    reducer: cb => {
-        import('./reducer/index').then(
-            reducerFun => {
-                const reducer = {}
-                reducer[__onamespace] = reducerFun.default
-                cb(null, reducer)
-            },
-            error => cb(error || {})
-        )
+    reducer: {
+        [`${__onamespace}`]: reducer
     },
     route,
     childOmodules: (r => {

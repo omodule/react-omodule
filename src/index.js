@@ -1,6 +1,6 @@
 import extractRoutes from './extractRoutes'
 import { lazyReducerEnhancer } from 'lazy-reducer'
-import extractSyncReducer from './extractSyncReducer'
+import extractReducers from './extractReducers'
 const omoduleEnhancer = lazyReducerEnhancer
 
-export { extractRoutes, omoduleEnhancer, extractSyncReducer }
+export { extractRoutes, omoduleEnhancer, extractReducers }

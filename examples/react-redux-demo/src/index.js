@@ -3,14 +3,17 @@ import { renderRoutes } from 'react-router-config'
 import React from 'react'
 import { render } from 'react-dom'
 import rootOmodule from './omodule'
-import { extractRoutes, omoduleEnhancer, extractSyncReducer } from 'react-omodule'
+import { extractRoutes, extractReducers } from 'react-omodule'
 import { Provider } from 'react-redux'
 import { combineReducers, createStore } from 'redux'
 
+// 提取 omodule 中 routes
 const routes = extractRoutes(rootOmodule)
-const rootReducers = extractSyncReducer(rootOmodule)
+// 提取 omodule 中 reducers
+const rootReducers = extractReducers(rootOmodule)
 
-const store = createStore(combineReducers(rootReducers), {}, omoduleEnhancer(rootReducers))
+const store = createStore(combineReducers(rootReducers), {})
+
 render(
     <Provider store={store}>
         <HashRouter>{renderRoutes(routes)}</HashRouter>
