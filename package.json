@@ -1,6 +1,6 @@
 {
   "name": "react-omodule",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,6 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "lazy-reducer": "^0.4.2",
     "lodash": "^4.17.10",
     "react": "^16.4.2",
     "redux": "^4.0.0",
@@ -30,5 +29,8 @@
   },
   "files": [
     "lib"
-  ]
+  ],
+  "dependencies": {
+    "lazy-reducer": "0.4.2"
+  }
 }
