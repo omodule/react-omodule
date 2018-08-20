@@ -11,7 +11,6 @@ const routes = extractRoutes(rootOmodule)
 const rootReducers = extractSyncReducer(rootOmodule)
 
 const store = createStore(combineReducers(rootReducers), {}, omoduleEnhancer(rootReducers))
-window.store = store
 render(
     <Provider store={store}>
         <HashRouter>{renderRoutes(routes)}</HashRouter>
