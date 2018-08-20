@@ -1,5 +1,6 @@
 import { isLazyReducer } from './common'
 import { withLazyReducer, LazyReducer } from 'lazy-reducer'
+import React from 'react'
 
 function wrapLazyReducer(lazyReducers, component) {
     return withLazyReducer(done => {
@@ -47,7 +48,30 @@ export default function extractRoutes(omodule, lazyReducers = []) {
                     })
                 }
             } else {
-                newRoute.component = LazyReducer
+                newRoute.component = props => (
+                    <LazyReducer
+                        reducers={done => {
+                            let reducerMaps = []
+                            for (var i = 0; i < lazyReducers.length; i++) {
+                                lazyReducers[i]((error, reducerMap) => {
+                                    if (error) {
+                                        throw error
+                                    } else {
+                                        reducerMaps = [...reducerMaps, reducerMap]
+                                        if (reducerMaps.length === lazyReducers.length) {
+                                            done(
+                                                reducerMaps.reduce((acc, cur) => {
+                                                    return { ...acc, ...cur }
+                                                }, {})
+                                            )
+                                        }
+                                    }
+                                })
+                            }
+                        }}>
+                        {props.children}
+                    </LazyReducer>
+                )
             }
             route = newRoute
         }
