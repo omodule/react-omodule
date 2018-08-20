@@ -1,6 +1,6 @@
 import { isLazyReducer } from './common'
 import { withLazyReducer, LazyReducer } from 'lazy-reducer'
-import React from 'react'
+import React, { Component } from 'react'
 
 function wrapLazyReducer(lazyReducers, component) {
     return withLazyReducer(done => {
@@ -48,30 +48,35 @@ export default function extractRoutes(omodule, lazyReducers = []) {
                     })
                 }
             } else {
-                newRoute.component = props => (
-                    <LazyReducer
-                        reducers={done => {
-                            let reducerMaps = []
-                            for (var i = 0; i < lazyReducers.length; i++) {
-                                lazyReducers[i]((error, reducerMap) => {
-                                    if (error) {
-                                        throw error
-                                    } else {
-                                        reducerMaps = [...reducerMaps, reducerMap]
-                                        if (reducerMaps.length === lazyReducers.length) {
-                                            done(
-                                                reducerMaps.reduce((acc, cur) => {
-                                                    return { ...acc, ...cur }
-                                                }, {})
-                                            )
-                                        }
+                class Wrapper extends Component {
+                    render() {
+                        return (
+                            <LazyReducer
+                                reducers={done => {
+                                    let reducerMaps = []
+                                    for (var i = 0; i < lazyReducers.length; i++) {
+                                        lazyReducers[i]((error, reducerMap) => {
+                                            if (error) {
+                                                throw error
+                                            } else {
+                                                reducerMaps = [...reducerMaps, reducerMap]
+                                                if (reducerMaps.length === lazyReducers.length) {
+                                                    done(
+                                                        reducerMaps.reduce((acc, cur) => {
+                                                            return { ...acc, ...cur }
+                                                        }, {})
+                                                    )
+                                                }
+                                            }
+                                        })
                                     }
-                                })
-                            }
-                        }}>
-                        {props.children}
-                    </LazyReducer>
-                )
+                                }}>
+                                {this.props.children}
+                            </LazyReducer>
+                        )
+                    }
+                }
+                newRoute.component = Wrapper
             }
             route = newRoute
         }
