@@ -1,4 +1,3 @@
-import isObjectLike from 'lodash/isObjectLike';
 import { isSyncReducer } from './common';
 
 const extractSyncReducer = (omodule, syncReducer = {}) => {
