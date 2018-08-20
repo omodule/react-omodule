@@ -1,0 +1,9 @@
+{
+    "presets": ["react", "env"],
+    "plugins": [
+        ["transform-omodule-namespace", { "rootPath": "./src" }],
+        "transform-object-rest-spread",
+        "transform-decorators-legacy",
+        "syntax-dynamic-import"
+    ]
+}
