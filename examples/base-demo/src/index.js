@@ -10,9 +10,9 @@ import { combineReducers, createStore } from 'redux'
 // 提取 omodule 中 routes
 const routes = extractRoutes(rootOmodule)
 // 提取 omodule 中 reducers
-const rootReducers = extractReducers(rootOmodule)
+const reducers = extractReducers(rootOmodule)
 
-const store = createStore(combineReducers(rootReducers), {})
+const store = createStore(combineReducers(reducers))
 
 render(
     <Provider store={store}>

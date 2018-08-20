@@ -17,11 +17,5 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html'
         })
-    ],
-    resolve: {
-        alias: {
-            'react-omodule': path.resolve(__dirname, '../../lib/index.js')
-
-        }
-    }
+    ]
 }
